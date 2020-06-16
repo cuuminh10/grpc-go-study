@@ -1,0 +1,60 @@
+syntax ="proto3";
+
+package main;
+
+option go_package="calculatorpb";
+
+message sumRequest{
+    int32 num1 = 1;
+    int32 num2 = 2;
+}
+
+message sumResponse{
+    int32 result =1;
+}
+
+message pndRequest{
+   int32 num = 1;
+}
+
+message pndResponse{
+   int32 result = 1;
+}
+
+message avgRequest{
+  int32 num = 1;
+}
+
+message avgResponse{
+  int32 result = 1;
+}
+
+message maxRequest{
+  int32 num = 1;
+}
+
+message maxResponse{
+  int32 result = 1;
+}
+
+message spareRequest{
+  float num = 1;
+}
+
+message spareResponse{
+  float result = 1;
+}
+
+service CalculatorService {
+    rpc Sum(sumRequest)
+        returns (sumResponse){}
+    rpc Pbd(pndRequest)
+        returns (stream pndResponse){}
+        rpc Avg(stream avgRequest)
+            returns (avgResponse){}
+  rpc Max(stream maxRequest)
+      returns (stream maxResponse){}
+  rpc Sqare( spareRequest)
+      returns ( spareResponse){}
+
+}
